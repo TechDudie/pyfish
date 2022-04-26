@@ -1,9 +1,11 @@
-import smtplib, ssl
+import smtplib
+import ssl
 
-smtp_server = "smtp.gmail.com"
-sender_email = "my@gmail.com"
-receiver_email = "your@gmail.com"
-password = input("Type your password and press enter: ")
+credentials = [i.split("=")[1] for i in open("email.conf").read().split("\n")]
+smtp_server = credentials[0]
+sender_email = credentials[1]
+password = credentials[2]
+receiver_email = input("Victim's Email Address: ")
 message = """\
 Subject: Hi there
 
